@@ -3,7 +3,58 @@
                                                                    
    DESCRIPTION :"PIC18F-based IoT development board featuring analog signal conditioning, LCD interface, Wi-Fi connectivity, and digital I/O expansion."
 
+BLOCK DIAGRAM
 
+## Block Diagram
+
+                    +------------------+
+                    |    24V DC Input  |
+                    +--------+---------+
+                             |
+               +-------------+-------------+
+               |                           |
+               v                           v
+      +----------------+         +----------------+
+      |    MC7805      |         |   AMS1117-3.3  |
+      |   5V Regulator |         |  3.3V Regulator|
+      +-------+--------+         +--------+-------+
+              |                           |
+              |                           |
+              v                           v
+    +---------------------------------------------+
+    |          PIC18F Microcontroller             |
+    +---------------------------------------------+
+       |        |         |         |        |
+       |        |         |         |        |
+       v        v         v         v        v
+
+ +---------+ +--------+ +--------+ +------+ +------+
+ | LM358   | | LCD    | | ESP-01 | | LED  | |Buzzer|
+ | Analog  | |Display | | Wi-Fi  | |Status| |Alarm |
+ | FrontEnd| | Module | | Module | | Ind. | |      |
+ +----+----+ +----+---+ +----+---+ +---+--+ +---+--+
+      |           |          |          |        |
+      |           |          |          |        |
+      v           |          |          |        |
++------------+    |          |          |        |
+| Analog     |    |          |          |        |
+| Sensors    |    |          |          |        |
++------------+    |          |          |        |
+                  |          |          |        |
+                  +----------+----------+--------+
+                             |
+                             v
+                 +----------------------+
+                 | UART / SPI / I²C     |
+                 | Communication Ports  |
+                 +----------------------+
+                             |
+                             v
+                 +----------------------+
+                 | External Devices &   |
+                 | Expansion Interfaces |
+                 +----------------------+
+```
 PIC18F-Based IoT Development Board
 Overview
 
